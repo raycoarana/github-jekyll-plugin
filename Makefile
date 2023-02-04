@@ -7,6 +7,11 @@ all: build
 start:
 	@bundle exec jekyll serve --verbose
 
+.PHONY: test
+test:
+	@bundle exec jekyll build
+	@bundle exec htmlproofer _site --disable-external
+
 .PHONY: build
 build: clean
 	@gem build *.gemspec

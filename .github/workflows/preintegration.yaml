@@ -1,0 +1,18 @@
+name: preintegration
+on:
+  push:
+    branches:
+      - '**'
+jobs:
+  preintegration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1.3'
+          bundler-cache: true
+      - name: Test & Build
+        run: make test build

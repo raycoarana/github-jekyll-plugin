@@ -10,8 +10,8 @@ module JekyllGithubPlugin
       @repoParts = @repo.split("/")
       @user = @repoParts[0]
       @repository = @repoParts[1]
-      @userUrl = "http://github.com/#{@user}"
-      @repoUrl = "http://github.com/#{@user}/#{@repository}"
+      @userUrl = "https://github.com/#{@user}"
+      @repoUrl = "https://github.com/#{@user}/#{@repository}"
     end
 
     def render(context)

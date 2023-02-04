@@ -1,0 +1,39 @@
+name: release
+on:
+  pull_request:
+    types: [ closed ]
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  release:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    env:
+      GEM_HOST_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1.3'
+          bundler-cache: true
+      - name: Test
+        run: make test
+      - name: Bump version
+        run:  |
+          git config --local user.email "release@raycoarana.com"
+          git config --local user.name "Release Bot"
+          echo "PUBLISHED_VERSION=$(bundle exec bump minor --tag)" >> $GITHUB_ENV
+      - name: Publish
+        run: make push
+      - name: Push new version
+        run: git push && git push --tags
+      - uses: ncipollo/release-action@v1
+        with:
+          tag: v${{ env.PUBLISHED_VERSION }}
+          generateReleaseNotes: true
+          makeLatest: true
+          artifacts: "*.gem"
