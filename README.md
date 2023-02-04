@@ -11,7 +11,7 @@ Add the plug-in to your Jekyll site Gemfile plug-in group:
 ```
 group :jekyll_plugins do
 ...
-  gem "jekyll-github-plugin", "~> 1.0.0"
+  gem "jekyll-github-plugin", "~> 1.1.0"
 end
 ```
 

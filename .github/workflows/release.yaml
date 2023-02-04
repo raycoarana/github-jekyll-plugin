@@ -26,7 +26,8 @@ jobs:
         run:  |
           git config --local user.email "release@raycoarana.com"
           git config --local user.name "Release Bot"
-          echo "PUBLISHED_VERSION=$(bundle exec bump minor --tag)" >> $GITHUB_ENV
+          bundle exec bump minor --tag
+          echo "PUBLISHED_VERSION=$(bundle exec bump current)" >> $GITHUB_ENV
       - name: Publish
         run: make push
       - name: Push new version
