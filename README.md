@@ -1,4 +1,6 @@
 # jekyll-github-plugin
+[![master branch status](https://img.shields.io/github/actions/workflow/status/raycoarana/github-jekyll-plugin/preintegration.yaml?branch=master)](https://github.com/raycoarana/github-jekyll-plugin/actions/workflows/preintegration.yaml)
+[![latest release](https://img.shields.io/github/v/release/raycoarana/github-jekyll-plugin?sort=semver)](https://github.com/raycoarana/github-jekyll-plugin/releases/latest)
 
 > 💎 Plug-in for jekyll to show a GitHub project in your pages.
 
